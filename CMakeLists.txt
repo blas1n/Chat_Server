@@ -13,5 +13,5 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build/${FOLDER_NAM
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build/${FOLDER_NAME}/lib)
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build/${FOLDER_NAME}/lib)
 
-add_subdirectory (external)
-add_subdirectory (server)
+add_subdirectory (External)
+add_subdirectory (Server)
