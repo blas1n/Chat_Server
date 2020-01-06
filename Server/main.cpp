@@ -19,13 +19,12 @@ public:
 
 	void OnAccept(const ClientSocket& socket) override
 	{
-		static auto msg = Name{ STR("enter") }.Get();
+		auto msg = Name{ STR("enter") }.Get();
 		msg = socket.GetData().GetIp() + msg;
-		Buffer buffer{ msg.length() + 1 };
+		Buffer buffer{ msg.length() };
 		buffer = msg.c_str();
 
 		for (const auto& client : GetServer().GetClients())
-			if (client != socket)
 				client.Send(0, buffer);
 	}
 
