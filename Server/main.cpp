@@ -10,8 +10,9 @@ class MyReactor : public Reactor
 public:
 	void OnReceive(const ClientSocket& socket, uint8 id, Buffer buf) override
 	{
-		buf >>= 16 * sizeof(char_t);
-		buf.Set(0, socket.GetData().GetIp());
+		const uint32 ip = inet_addr(socket.GetData().GetIp());
+		buf >>= sizeof(ip);
+		buf.Set(0, EndianTranslator::Translate(ip));
 
 		for (const auto& client : GetServer().GetClients())
 			client.Send(id, buf);
